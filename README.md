@@ -25,6 +25,18 @@ uvicorn app.main:app --reload
 http://127.0.0.1:8000
 ```
 
+## Run Console Version
+
+ไฟล์ `console_registration.py` เป็นเวอร์ชัน console ตามตัวอย่างใน PDF
+
+```powershell
+python console_registration.py
+```
+
+- พิมพ์ `done` เมื่อกรอกสมาชิกครบ
+- พิมพ์ `exit` ในช่องชื่อทีมเพื่อปิดระบบ
+- ถ้า Windows terminal แสดงภาษาไทยไม่ได้ ให้ตั้ง `$env:PYTHONIOENCODING = "utf-8"` ก่อนรัน
+
 เปิด Dashboard ที่:
 
 ```text
