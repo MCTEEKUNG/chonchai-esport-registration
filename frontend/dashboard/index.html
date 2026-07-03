@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard | Chonchai E-Sport Tournament</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href="/dashboard/dashboard.css" />
+  </head>
+  <body>
+    <main class="shell dashboard-shell">
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a class="nav-link" href="/">สมัครทีม</a>
+        <a class="nav-link is-active" href="/dashboard/">Dashboard</a>
+      </nav>
+
+      <section class="dashboard-header">
+        <div>
+          <p class="eyebrow">Tournament Dashboard</p>
+          <h1>ภาพรวมการลงทะเบียน</h1>
+          <p class="dashboard-subtitle">ติดตามจำนวนทีม สมาชิก และสัดส่วนทีมตามเกมจาก Local Database</p>
+        </div>
+        <button id="refreshButton" class="secondary-button" type="button">Refresh</button>
+      </section>
+
+      <section class="metric-grid" aria-label="Registration metrics">
+        <article class="metric-card">
+          <span>ทีมทั้งหมด</span>
+          <strong id="totalTeams">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>สมาชิกทั้งหมด</span>
+          <strong id="totalMembers">0</strong>
+        </article>
+        <article class="metric-card">
+          <span>เกมที่เปิดแข่ง</span>
+          <strong id="totalGames">0</strong>
+        </article>
+      </section>
+
+      <section class="dashboard-grid">
+        <article class="panel chart-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Graph</p>
+            <h2>จำนวนทีมแยกตามเกม</h2>
+          </div>
+          <div id="barChart" class="bar-chart" role="img" aria-label="กราฟแท่งจำนวนทีมแยกตามเกม"></div>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Share</p>
+            <h2>สัดส่วนทีมตามเกม</h2>
+          </div>
+          <div class="donut-layout">
+            <svg id="donutChart" class="donut-chart" viewBox="0 0 120 120" role="img" aria-label="กราฟวงกลมสัดส่วนทีมตามเกม"></svg>
+            <div id="donutLegend" class="legend"></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel dashboard-table-panel">
+        <div class="section-heading">
+          <p class="eyebrow">Latest</p>
+          <h2>ทีมที่สมัครล่าสุด</h2>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>ทีม</th>
+                <th>เกม</th>
+                <th>สมาชิก</th>
+              </tr>
+            </thead>
+            <tbody id="latestTeamsTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <p id="dashboardMessage" class="message" aria-live="polite"></p>
+    </main>
+
+    <script src="/dashboard/dashboard.js"></script>
+  </body>
+</html>

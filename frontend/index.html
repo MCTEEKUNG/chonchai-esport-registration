@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chonchai E-Sport Tournament</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <nav class="top-nav" aria-label="Primary navigation">
+        <a class="nav-link is-active" href="/">สมัครทีม</a>
+        <a class="nav-link" href="/dashboard/">Dashboard</a>
+      </nav>
+
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Registration System</p>
+          <h1>ชลชาย E-Sport Tournament</h1>
+          <p class="subtitle">สมัครทีมเข้าแข่งขัน เลือกเกม และตรวจสอบรายชื่อทีมที่ลงทะเบียนล่าสุด</p>
+        </div>
+      </section>
+
+      <section class="layout" aria-label="Tournament registration">
+        <aside class="panel games-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Games</p>
+            <h2>เกมที่เปิดแข่ง</h2>
+          </div>
+          <ul id="gamesList" class="games-list" aria-live="polite"></ul>
+        </aside>
+
+        <section class="panel form-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Register</p>
+            <h2>ลงทะเบียนทีม</h2>
+          </div>
+
+          <form id="registerForm">
+            <label>
+              ชื่อทีม
+              <input id="teamName" name="teamName" type="text" placeholder="เช่น Chonchai Alpha" required />
+            </label>
+
+            <label>
+              เกมที่ลงแข่ง
+              <select id="gameSelect" name="game" required></select>
+            </label>
+
+            <div class="members-header">
+              <span>รายชื่อสมาชิก</span>
+              <button id="addMemberButton" class="secondary-button" type="button">+ เพิ่มสมาชิก</button>
+            </div>
+
+            <div id="membersList" class="members-list"></div>
+
+            <button class="primary-button" type="submit">ส่งใบสมัคร</button>
+            <p id="message" class="message" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="panel teams-panel">
+          <div class="section-heading">
+            <p class="eyebrow">Database</p>
+            <h2>ทีมที่ลงทะเบียนล่าสุด</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>ทีม</th>
+                  <th>เกม</th>
+                  <th>สมาชิก</th>
+                </tr>
+              </thead>
+              <tbody id="teamsTable"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="/script.js"></script>
+  </body>
+</html>

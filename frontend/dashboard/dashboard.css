@@ -1,0 +1,364 @@
+.dashboard-shell {
+  padding-top: 24px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 18px 0;
+  padding: 28px;
+  color: white;
+  background:
+    linear-gradient(90deg, rgba(12, 27, 43, 0.94), rgba(12, 27, 43, 0.58)),
+    url("https://images.unsplash.com/photo-1556438064-2d7646166914?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.dashboard-header h1 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.dashboard-subtitle {
+  max-width: 680px;
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.metric-card {
+  min-height: 126px;
+  display: grid;
+  align-content: space-between;
+  padding: 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(20, 34, 50, 0.08);
+}
+
+.metric-card span {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.metric-card strong {
+  color: var(--ink);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.chart-panel {
+  min-height: 360px;
+}
+
+.bar-chart {
+  display: grid;
+  gap: 16px;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr) 48px;
+  align-items: center;
+  gap: 12px;
+}
+
+.bar-label,
+.bar-value {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.bar-track {
+  height: 28px;
+  background: #eef3f6;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  min-width: 4px;
+  height: 100%;
+  border-radius: 6px;
+  background: var(--accent);
+}
+
+.donut-layout {
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr);
+  align-items: center;
+  gap: 20px;
+}
+
+.donut-chart {
+  width: 170px;
+  height: 170px;
+}
+
+.donut-empty {
+  fill: none;
+  stroke: #e5edf2;
+  stroke-width: 18;
+}
+
+.donut-segment {
+  fill: none;
+  stroke-width: 18;
+  stroke-linecap: round;
+}
+
+.legend {
+  display: grid;
+  gap: 10px;
+}
+
+.legend-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.legend-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.dashboard-table-panel {
+  margin-top: 18px;
+}
+
+@media (max-width: 860px) {
+  body {
+    background: #edf3f6;
+  }
+
+  .dashboard-shell {
+    width: min(100% - 16px, 430px);
+    padding-top: 8px;
+    padding-bottom: 28px;
+  }
+
+  .dashboard-shell .top-nav {
+    position: sticky;
+    top: 8px;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin: 0 0 10px;
+    padding: 6px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    box-shadow: 0 10px 24px rgba(20, 34, 50, 0.12);
+  }
+
+  .dashboard-shell .nav-link {
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 10px;
+  }
+
+  .dashboard-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+    min-height: 188px;
+    margin: 10px 0 12px;
+    padding: 20px;
+    border-radius: 8px;
+    background-position: center top;
+  }
+
+  .dashboard-header h1 {
+    font-size: 2rem;
+    line-height: 1.12;
+  }
+
+  .dashboard-subtitle {
+    max-width: 34ch;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  #refreshButton {
+    min-height: 44px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .metric-grid,
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .metric-grid {
+    margin-top: 12px;
+  }
+
+  .metric-card {
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .metric-card strong {
+    font-size: 2.15rem;
+  }
+
+  .dashboard-grid {
+    margin-top: 12px;
+  }
+
+  .chart-panel,
+  .dashboard-table-panel {
+    padding: 16px;
+  }
+
+  .chart-panel {
+    min-height: auto;
+  }
+
+  .section-heading {
+    margin-bottom: 14px;
+  }
+
+  .bar-chart {
+    gap: 14px;
+  }
+
+  .bar-row {
+    grid-template-columns: 1fr 40px;
+    gap: 8px 10px;
+  }
+
+  .bar-label {
+    min-width: 0;
+  }
+
+  .bar-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    height: 24px;
+  }
+
+  .bar-value {
+    justify-self: end;
+  }
+
+  .donut-layout {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 16px;
+  }
+
+  .donut-chart {
+    width: 148px;
+    height: 148px;
+  }
+
+  .legend {
+    width: 100%;
+  }
+
+  .legend-row {
+    min-height: 36px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dashboard-table-panel {
+    margin-top: 12px;
+  }
+
+  .dashboard-table-panel table {
+    min-width: 0;
+  }
+
+  .dashboard-table-panel thead {
+    display: none;
+  }
+
+  .dashboard-table-panel tr {
+    display: grid;
+    gap: 6px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .dashboard-table-panel td {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 10px;
+    padding: 0;
+    border-bottom: 0;
+    line-height: 1.45;
+  }
+
+  .dashboard-table-panel td:nth-child(1)::before {
+    content: "ทีม";
+  }
+
+  .dashboard-table-panel td:nth-child(2)::before {
+    content: "เกม";
+  }
+
+  .dashboard-table-panel td:nth-child(3)::before {
+    content: "สมาชิก";
+  }
+
+  .dashboard-table-panel td::before {
+    color: var(--muted);
+    font-weight: 800;
+  }
+
+  .dashboard-table-panel .empty-state {
+    display: block;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .dashboard-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .metric-card strong {
+    font-size: 1.95rem;
+  }
+
+  .panel {
+    border-radius: 8px;
+  }
+}
