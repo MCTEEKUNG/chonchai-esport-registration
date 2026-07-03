@@ -5,7 +5,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
-from app.database import get_stats, get_team, init_db, list_teams, save_team, team_exists
+from app.database import (
+    get_stats,
+    get_team,
+    init_db,
+    list_teams,
+    registered_members,
+    save_team,
+    team_exists,
+)
 
 
 allowed_games = ("RoV", "Valorant", "FC Online")
@@ -53,6 +61,12 @@ def register_team(team_name: str, game: str, members_list: list[str]) -> tuple[b
 
     if len(cleaned_members) < 3:
         return False, "สมาชิกไม่ครบ 3 คน"
+
+    if len(cleaned_members) != len(set(cleaned_members)):
+        return False, "ชื่อสมาชิกซ้ำกัน"
+
+    if set(cleaned_members) & registered_members():
+        return False, "ชื่อสมาชิกนี้ถูกใช้ไปแล้ว"
 
     save_team(cleaned_team_name, cleaned_game, cleaned_members)
     return True, "ลงทะเบียนสำเร็จ!"

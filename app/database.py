@@ -49,6 +49,18 @@ def team_exists(team_name: str) -> bool:
     return row is not None
 
 
+def registered_members() -> set[str]:
+    members: set[str] = set()
+
+    with get_connection() as connection:
+        rows = connection.execute("SELECT members_json FROM teams").fetchall()
+
+    for row in rows:
+        members.update(json.loads(row["members_json"]))
+
+    return members
+
+
 def save_team(team_name: str, game: str, members: list[str]) -> None:
     with get_connection() as connection:
         connection.execute(

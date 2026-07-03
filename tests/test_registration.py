@@ -88,6 +88,45 @@ def test_reject_too_few_members():
     assert response.json()["message"] == "สมาชิกไม่ครบ 3 คน"
 
 
+def test_reject_duplicate_members_in_same_team():
+    response = client.post(
+        "/register",
+        json={
+            "team_name": "Chonchai Same Members",
+            "game": "RoV",
+            "members": ["A", "B", "A"],
+        },
+    )
+
+    assert response.status_code == 200
+    assert response.json()["success"] is False
+    assert response.json()["message"] == "ชื่อสมาชิกซ้ำกัน"
+
+
+def test_reject_member_used_by_another_team():
+    first_response = client.post(
+        "/register",
+        json={
+            "team_name": "Chonchai First",
+            "game": "RoV",
+            "members": ["A", "B", "C"],
+        },
+    )
+    second_response = client.post(
+        "/register",
+        json={
+            "team_name": "Chonchai Second",
+            "game": "Valorant",
+            "members": ["D", "E", "A"],
+        },
+    )
+
+    assert first_response.json()["success"] is True
+    assert second_response.status_code == 200
+    assert second_response.json()["success"] is False
+    assert second_response.json()["message"] == "ชื่อสมาชิกนี้ถูกใช้ไปแล้ว"
+
+
 def test_get_teams_after_register():
     client.post(
         "/register",
